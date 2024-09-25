@@ -6,6 +6,11 @@
 
 body {
 	background: #cc5500;
+	height: 95vh;
+}
+
+header {
+	height: 5vh;
 }
 
 header > nav {
@@ -18,6 +23,12 @@ header > nav {
 nav > .name {
 	font-size: 1.5rem;
 	color: #ecfdf5;
+	transition: all ease 0.15s;
+	border-radius: 8px;
+}
+
+nav > .name:hover {
+	border-bottom: 5px solid #f88c00;
 }
 
 nav > .buttons {
@@ -32,10 +43,16 @@ nav > .buttons > div {
 	border: None;
 	color: #ecfdf5;
 	text-align: center;
+	transition: all ease 0.15s;
 }
 
 nav > .buttons > div:hover {
 	border-bottom: 5px solid #f88c00;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
 }
 
 #content > .container {
@@ -55,6 +72,7 @@ nav > .buttons > div:hover {
 	display: flex;
 	justify-content: space-evenly;
 	padding: 50px 0;
+	width: 100%;
 }
 
 #content > .buttons > div {

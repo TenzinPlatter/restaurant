@@ -1,5 +1,6 @@
 import burgerImg from "./assets/burger.png"
 import arrow from "./assets/arrow.svg"
+import { menuClicked, aboutClicked, buttonListener } from "./index.js"
 
 function createElement(type, classList = null, text = null) {
 	const e = document.createElement(type);
@@ -15,32 +16,32 @@ function createElement(type, classList = null, text = null) {
 	return e
 }
 
-const nav = document.querySelector("nav");
-const content = document.querySelector("#content");
-
-const createElements = () => {
-	createNavButtons();
+function createElements() {
 	createPageButtons();
 	createReviewAndImg();
 }
 
-const createNavButtons = () => {
-	const buttons = createElement("div", ["buttons"]);
-	buttons.appendChild(createElement("div", ["home"], "Home"));
-	buttons.appendChild(createElement("div", ["menu"], "Menu"));
-	buttons.appendChild(createElement("div", ["about"], "About"));
+function addEventListeners(menu, about) {
+	menu.addEventListener("click", () => {
+		buttonListener.dispatchEvent(menuClicked)
+	})
 
-	nav.appendChild(createElement("div", ["name"], "Maisie's"));
-	nav.appendChild(buttons); 
-};
+	about.addEventListener("click", () => {
+		buttonListener.dispatchEvent(aboutClicked)
+	})
+}
 
 const createPageButtons = () => {
+	const content = document.querySelector("#content");
 	const buttons = createElement("div", ["buttons"]);
 
 	const menuButton = createElement("div", ["menu"]);
 	const menuArrow = createElement("img");
+
 	const aboutButton = createElement("div", ["about"]);
 	const aboutArrow = createElement("img");
+
+	addEventListeners(menuButton, aboutButton);
 
 	menuArrow.src = arrow;
 	menuButton.appendChild(createElement("div", null, "Menu"));
@@ -58,6 +59,7 @@ const createPageButtons = () => {
 
 
 const createReviewAndImg = () => {
+	const content = document.querySelector("#content");
 	const textImgContainer = createElement("div", ["container"]);
 
 	const backgroundImg = createElement("img");
@@ -74,4 +76,4 @@ const createReviewAndImg = () => {
 
 
 
-export default createElements;
+export { createElements as default, createElement }
